@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Component
 public class OwnerDAO {
@@ -13,5 +14,13 @@ public class OwnerDAO {
 
     public Collection<Owner> getOwners(){
         return ownerRepository.findAll();
+    }
+
+    public Optional<Owner> getOwner(Integer ownerId){
+        return ownerRepository.findById(ownerId);
+    }
+
+    public Owner createOwner(Owner owner){
+        return ownerRepository.insert(owner);
     }
 }
