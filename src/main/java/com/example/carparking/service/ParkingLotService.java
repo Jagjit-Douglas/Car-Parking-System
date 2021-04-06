@@ -17,4 +17,28 @@ public class ParkingLotService {
     public Collection<ParkingLot> getParkingLots(){
         return parkingLotDAO.getParkingLots();
     }
+
+    public Collection<ParkingLot> getEmptyLots(String size) {
+        return parkingLotDAO.getEmptyLots(size);
+    }
+
+    public ParkingLot updateParkingLot(ParkingLot parkingLot){
+        return parkingLotDAO.updateParkingLot(parkingLot);
+    }
+
+//    public Collection<ParkingLot> getMediumEmptyLots() {
+//        return parkingLotDAO.getMediumEmptyLots();
+//    }
+//
+//    public Collection<ParkingLot> getSmallEmptyLots() {
+//        return parkingLotDAO.getSmallEmptyLots();
+//    }
+
+//    public ParkingLot getEmptyLot() {
+//        return parkingLotDAO.getEmptyLot();
+//    }
+
+//    public ParkingLot createParkingLot(ParkingLot parkingLot){
+//        return parkingLotDAO.createParkingLot(parkingLot);
+//    }
 }
