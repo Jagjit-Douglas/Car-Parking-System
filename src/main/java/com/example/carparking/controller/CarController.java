@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
+
     @Autowired
     private CarService carService;
 
@@ -20,5 +22,21 @@ public class CarController {
     @GetMapping
     public Collection<Car> getCars(){
         return carService.getCars();
+    }
+
+    @GetMapping("/{carId}")
+    public Optional<Car> getCar(@PathVariable("carId") Integer carId){
+        return carService.getCar(carId);
+    }
+
+    @PostMapping
+    public Car postCar(@RequestBody Car car){
+        car.setCarId(sequenceGeneratorService.getSequenceNumber(Car.SEQUENCE_NAME));
+        return carService.createCar(car);
+    }
+
+    @PutMapping
+    public Car updateCar(@RequestBody Car car){
+        return carService.updateCar(car);
     }
 }

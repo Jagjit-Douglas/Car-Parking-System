@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Component
 public class CarDAO {
+
     @Autowired
     private CarRepository carRepository;
 
@@ -17,5 +19,13 @@ public class CarDAO {
 
     public Car createCar(Car car){
         return carRepository.insert(car);
+    }
+
+    public Optional<Car> getCar(Integer carId){
+        return carRepository.findById(carId);
+    }
+
+    public Car updateCar(Car car){
+        return carRepository.save(car);
     }
 }

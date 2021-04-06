@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Service
 public class CarService {
+
     @Autowired
     private CarDAO carDAO;
 
@@ -19,5 +21,13 @@ public class CarService {
 
     public Car createCar(Car car){
         return carDAO.createCar(car);
+    }
+
+    public Optional<Car> getCar(Integer carId){
+        return carDAO.getCar(carId);
+    }
+
+    public Car updateCar(Car car){
+        return carDAO.updateCar(car);
     }
 }
