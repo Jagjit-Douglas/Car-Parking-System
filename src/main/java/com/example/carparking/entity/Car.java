@@ -91,4 +91,5 @@ public class Car {
     public void setTotalTime(int totalTime) {
         this.totalTime = totalTime;
     }
+
 }
