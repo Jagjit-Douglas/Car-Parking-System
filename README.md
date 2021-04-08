@@ -33,6 +33,16 @@ Spring Boot, React, and MongoDB.
   <br />
   <br />
 
+### **Login info for the application**
+
+Username: admin |
+Password: admin123
+
+Username: admin2 |
+Password: admin456
+<br />
+<br />
+
 ### **Introduction**
 
 This is a car parking system web application to override the problems that persists in practicing manual system. This application is developed to eliminate the problems that are faced by the existing car parking systems. Moreover, this system is designed to make the life of the residents easy and hassle-free, thereby giving them a tool that makes their parking experience smooth and better than ever.
