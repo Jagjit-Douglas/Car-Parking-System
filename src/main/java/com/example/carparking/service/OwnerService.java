@@ -13,15 +13,15 @@ public class OwnerService {
     @Autowired
     private OwnerDAO ownerDAO;
 
-    public Collection<Owner> getOwners(){
+    public Collection<Owner> getOwners() {
         return ownerDAO.getOwners();
     }
 
-    public Optional<Owner> getOwner(Integer ownerId){
+    public Optional<Owner> getOwner(Integer ownerId) {
         return ownerDAO.getOwner(ownerId);
     }
 
-    public Owner createOwner(Owner owner){
+    public Owner createOwner(Owner owner) {
         return ownerDAO.createOwner(owner);
     }
 }

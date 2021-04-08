@@ -32,20 +32,26 @@ export default class ShowCars extends Component {
                 this.setState({
                   owners: tempOwners,
                 });
-                let carsAndOwners = this.state.cars.map((item, i) =>
-                  Object.assign({}, item, this.state.owners[i])
-                );
-                this.setState({
-                  carsAndOwners: carsAndOwners,
-                  loading: false,
-                });
-                console.log(carsAndOwners);
-                console.log(tempOwners);
+                if (this.state.owners.length === this.state.cars.length) {
+                  let carsAndOwners = [];
+                  for (let i = 0; i < this.state.cars.length; i++) {
+                    carsAndOwners.push({
+                      ...this.state.cars[i],
+                      ...this.state.owners.find(
+                        (itmInner) =>
+                          itmInner.ownerId === this.state.cars[i].carId
+                      ),
+                    });
+                  }
+                  this.setState({
+                    carsAndOwners: carsAndOwners,
+                    loading: false,
+                  });
+                  console.table(this.state.carsAndOwners);
+                }
               })
               .catch((e) => console.log(e));
           });
-
-          console.log(res.data);
         })
         .catch((e) => {
           console.log(e);
@@ -90,16 +96,6 @@ export default class ShowCars extends Component {
             </tbody>
           )}
         </table>
-
-        {/* {this.state.cars.map((car) => (
-          <li>{car.carNumber}</li>
-        ))}
-
-        {this.state.owners.map((owner) => (
-          <li>{owner.ownerId}</li>
-        ))}
-
-        <h3>Smile :) </h3> */}
       </>
     );
   }

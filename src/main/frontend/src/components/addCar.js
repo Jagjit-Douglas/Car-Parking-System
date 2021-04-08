@@ -35,14 +35,12 @@ export default class AddCar extends Component {
     axios
       .get(`/api/lots/${this.state.carSize}`)
       .then((res) => {
-        console.log(res);
         this.setState({
           lotNumber: res.data[0].lotNumber,
         });
 
         axios
           .post("/api/owners", {
-            //ownerId: parseInt(this.state.ownerId),
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             contactNumber: this.state.contactNumber,
@@ -50,7 +48,6 @@ export default class AddCar extends Component {
           .then((res) => {
             axios
               .post("/api/cars", {
-                //carId: parseInt(this.state.carId),
                 carNumber: this.state.carNumber,
                 ownerId: res.data.ownerId,
                 lotNumber: this.state.lotNumber,
@@ -73,24 +70,16 @@ export default class AddCar extends Component {
                     });
 
                     window.location = "/cars";
-
-                    console.log(res);
                   })
                   .catch((e) => console.log(e));
-                console.log(res);
               })
               .catch((e) => console.log(e));
-
-            console.log(res);
           })
           .catch((e) => {
             console.log(e);
           });
-
-        console.log(res);
       })
       .catch((e) => {
-        console.log("thelrlwjis a n  erroor");
         this.setState({
           error: "An error occured!",
         });
@@ -127,16 +116,6 @@ export default class AddCar extends Component {
                 />
               </div>
 
-              {/* <div className="form-row">
-                <label className="form-label">Car Size</label>
-                <input
-                  className="form-input"
-                  type="text"
-                  name="carSize"
-                  value={this.state.carSize}
-                  onChange={this.onChange}
-                />
-              </div> */}
               <div className="form-row">
                 <label className="form-label">Car Size</label>
                 <select
@@ -192,66 +171,6 @@ export default class AddCar extends Component {
           </form>
           <hr />
         </div>
-
-        {/* <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            placeholder="Car Id"
-            name="carId"
-            value={this.state.carId}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="Car Number"
-            name="carNumber"
-            value={this.state.carNumber}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="Car Size"
-            name="carSize"
-            value={this.state.carSize}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="ownerId"
-            name="ownerId"
-            value={this.state.ownerId}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="firstName"
-            name="firstName"
-            value={this.state.firstName}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="lastName"
-            name="lastName"
-            value={this.state.lastName}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="text"
-            placeholder="contactNumber"
-            name="contactNumber"
-            value={this.state.contactNumber}
-            onChange={this.onChange}
-          />
-
-          <button type="submit">Add Car</button>
-        </form> */}
       </>
     );
   }

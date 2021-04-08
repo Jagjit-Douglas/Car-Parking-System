@@ -18,7 +18,7 @@ public class AdminController {
     private AdminService adminService;
 
     @GetMapping("/{username}/{password}")
-    public Collection<Admin> getEmptyLots(@PathVariable("username") String username, @PathVariable("password") String password){
+    public Collection<Admin> getEmptyLots(@PathVariable("username") String username, @PathVariable("password") String password) {
         return adminService.getAdmins(username, password);
     }
 }

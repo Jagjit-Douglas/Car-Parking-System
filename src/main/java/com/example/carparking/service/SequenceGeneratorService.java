@@ -18,7 +18,7 @@ public class SequenceGeneratorService {
     @Autowired
     private MongoOperations mongoOperations;
 
-    public int getSequenceNumber(String sequenceName){
+    public int getSequenceNumber(String sequenceName) {
         Query query = new Query(Criteria.where("id").is(sequenceName));
         Update update = new Update().inc("seq", 1);
 

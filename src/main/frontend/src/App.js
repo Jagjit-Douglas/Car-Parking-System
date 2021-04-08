@@ -3,7 +3,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import MyNavbar from "./components/myNavbar";
-import Test from "./components/test";
 import AddCar from "./components/addCar";
 import ShowCars from "./components/showCars";
 import ExitCar from "./components/exitCar";

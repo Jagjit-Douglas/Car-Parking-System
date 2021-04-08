@@ -21,11 +21,11 @@ export default class ExitCar extends Component {
         let parkingRate = 0;
 
         if (res.data.carSize === "Small") {
-          parkingRate = 3.45;
+          parkingRate = 0.45;
         } else if (res.data.carSize === "Medium") {
-          parkingRate = 4.55;
+          parkingRate = 0.55;
         } else if (res.data.carSize === "Large") {
-          parkingRate = 5.65;
+          parkingRate = 0.65;
         }
 
         if (res.data.amountPaid !== 0) {
@@ -39,8 +39,6 @@ export default class ExitCar extends Component {
           car: res.data,
           loading: false,
         });
-
-        console.log(res);
       })
       .catch((e) => {
         console.log(e);
@@ -52,8 +50,6 @@ export default class ExitCar extends Component {
         this.setState({
           owner: res.data,
         });
-
-        console.log(res);
       })
       .catch((e) => {
         console.log(e);
@@ -63,7 +59,6 @@ export default class ExitCar extends Component {
   clickHandler() {
     let entryTimeString = this.state.car.entryDateAndTime;
     let exitTimeString = new Date().toLocaleString();
-    //console.log(exitTimeString);
 
     let entryTime = new Date(entryTimeString);
     let exitTime = new Date(exitTimeString);
@@ -74,7 +69,7 @@ export default class ExitCar extends Component {
       (exitTime.getTime() - entryTime.getTime()) / 1000 / 60
     );
 
-    let amount = totalTime * parkingRate;
+    let amount = Math.round(totalTime * parkingRate).toFixed(2);
 
     axios
       .put("/api/cars", {
@@ -89,11 +84,6 @@ export default class ExitCar extends Component {
         totalTime: totalTime,
       })
       .then((res) => {
-        console.log(res);
-        // this.setState({
-        //   totalTime: totalTime,
-        //   amount: totalTime * parkingRate,
-        // });
         this.setState({
           car: res.data,
         });
@@ -108,7 +98,6 @@ export default class ExitCar extends Component {
             this.setState({
               exited: true,
             });
-            console.log(res);
           })
           .catch((e) => console.log(e));
       })
@@ -143,7 +132,7 @@ export default class ExitCar extends Component {
               <b>Entered at</b> - {this.state.car.entryDateAndTime}
             </p>
             <p>
-              <b>Parking rate per minute</b> - ${this.state.parkingRate}
+              <b>Parking rate per hour</b> - ${60 * this.state.parkingRate}
             </p>
 
             {!this.state.exited ? (

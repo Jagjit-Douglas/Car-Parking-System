@@ -13,19 +13,19 @@ public class CarDAO {
     @Autowired
     private CarRepository carRepository;
 
-    public Collection<Car> getCars(){
+    public Collection<Car> getCars() {
         return carRepository.findAll();
     }
 
-    public Car createCar(Car car){
+    public Car createCar(Car car) {
         return carRepository.insert(car);
     }
 
-    public Optional<Car> getCar(Integer carId){
+    public Optional<Car> getCar(Integer carId) {
         return carRepository.findById(carId);
     }
 
-    public Car updateCar(Car car){
+    public Car updateCar(Car car) {
         return carRepository.save(car);
     }
 

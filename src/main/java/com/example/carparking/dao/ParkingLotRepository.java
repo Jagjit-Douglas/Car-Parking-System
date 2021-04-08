@@ -9,8 +9,4 @@ import java.util.Collection;
 public interface ParkingLotRepository extends MongoRepository<ParkingLot, Integer> {
     @Query("{ 'size' : ?0, 'empty' : true }")
     Collection<ParkingLot> findEmptyLots(String size);
-
-//    @Query("{ 'size' : ?0, 'empty' : ?1 }")
-//    ParkingLot findFirstBySize(String size, boolean empty);
-
 }

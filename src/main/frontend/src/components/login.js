@@ -71,28 +71,6 @@ export default class Login extends Component {
           </form>
           <hr />
         </div>
-
-        {/* {this.state.error && <p>{this.state.error}</p>}
-
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            placeholder="Username"
-            name="username"
-            value={this.state.carId}
-            onChange={this.onChange}
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={this.state.carNumber}
-            onChange={this.onChange}
-          />
-
-          <button type="submit">Login</button>
-        </form> */}
       </>
     );
   }

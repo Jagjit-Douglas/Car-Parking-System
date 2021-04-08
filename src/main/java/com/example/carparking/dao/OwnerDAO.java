@@ -12,15 +12,15 @@ public class OwnerDAO {
     @Autowired
     private OwnerRepository ownerRepository;
 
-    public Collection<Owner> getOwners(){
+    public Collection<Owner> getOwners() {
         return ownerRepository.findAll();
     }
 
-    public Optional<Owner> getOwner(Integer ownerId){
+    public Optional<Owner> getOwner(Integer ownerId) {
         return ownerRepository.findById(ownerId);
     }
 
-    public Owner createOwner(Owner owner){
+    public Owner createOwner(Owner owner) {
         return ownerRepository.insert(owner);
     }
 }
